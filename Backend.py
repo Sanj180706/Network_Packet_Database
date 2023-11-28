@@ -40,7 +40,7 @@ def capture_packets(duration):
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Bandeya1234*",
+            password="PWD",
             database="DBMS_project"
         )
         cursor = connection.cursor()
@@ -113,7 +113,7 @@ try:
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Bandeya1234*",
+        password="PWD",
         database="DBMS_project"
     )
     cursor = connection.cursor()
@@ -192,7 +192,7 @@ try:
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="Bandeya1234*",
+        password="PWD",
         database="DBMS_project"
     )
     cursor = connection.cursor()
