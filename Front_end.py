@@ -8,7 +8,7 @@ def fetch_data(query, params=None):
     connection = mysql.connector.connect(
         host="localhost",
         user="root",
-        password="PWD",
+        password="Bandeya1234*",
         database="DBMS_project"
     )
     cursor = connection.cursor()
@@ -74,7 +74,7 @@ def insert_packet(packet_id):
         connection = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="PWD",
+            password="Bandeya1234*",
             database="DBMS_project"
         )
 
@@ -135,11 +135,34 @@ def display_sequence_per_interface():
     except Exception as e:
         st.error(f"Error fetching data: {e}")
 
+
+
+def delete_router():
+    try:
+        connection = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="Bandeya1234*",
+            database="DBMS_project"
+        )
+
+        cursor = connection.cursor()
+        # Attempt to delete a record from the Router table
+        cursor.execute("DELETE FROM Router")
+        connection.commit()
+        st.success("Deletion from Router table successful")
+    except Error as e:
+        st.error(f"Error deleting: {e}")
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()
+
 # Streamlit app
 st.title('Packet Analyzer')
 
 # Example Dropdowns
-selected_option = st.selectbox('Choose an Option', ['Select', 'Packet Speed', 'All Tables', 'Packet Router Contact', 'Insert Packet','Packets per Interface',   'Get Packet Count for IP'])
+selected_option = st.selectbox('Choose an Option', ['Select', 'Packet Speed', 'All Tables', 'Packet Router Contact', 'Insert Packet','Packets per Interface',   'Get Packet Count for IP', 'Delete Router records'])
 
 # Display data based on the selected option
 if selected_option == 'Packet Speed':
@@ -178,4 +201,7 @@ elif selected_option == 'Get Packet Count for IP':
 
 elif selected_option == 'Sequence through IP':
     display_sequence_per_interface()
+
+elif selected_option == 'Delete Router records':
+    delete_router()
 
